@@ -15,10 +15,11 @@ import com.facebook.react.module.annotations.ReactModule;
 public class AndroidKeyboardModeChangerModule extends ReactContextBaseJavaModule {
     public static final String NAME = "AndroidKeyboardModeChanger";
     private int _mode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
-    private int _defaultMode = getCurrentActivity().getWindow().getAttributes().softInputMode;
+    private int _defaultMode = 16;
 
     public AndroidKeyboardModeChangerModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        _defaultMode = getCurrentActivity().getWindow().getAttributes().softInputMode;
     }
 
     @Override
