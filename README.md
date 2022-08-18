@@ -11,11 +11,16 @@ npm install react-native-android-keyboard-mode-changer
 ## Usage
 
 ```js
-import { multiply } from "react-native-android-keyboard-mode-changer";
+import { getAndroidKeyboardModeChanger } from "react-native-android-keyboard-mode-changer";
 
 // ...
+// Returns undefined for any platform beside android. So you will have to use as optional with ?
+const androidKeyboardModeChanger = getAndroidKeyboardModeChanger();
 
-const result = await multiply(3, 7);
+androidKeyboardModeChanger?.setAdjustPan().then()
+
+// if your app defaul soft input mode is different from what you are setting, than run resetToDefault when leaving screen
+androidKeyboardModeChanger?.resetToDefault().then()
 ```
 
 ## Contributing
