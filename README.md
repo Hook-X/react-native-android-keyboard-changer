@@ -19,7 +19,7 @@ const androidKeyboardModeChanger = getAndroidKeyboardModeChanger();
 
 androidKeyboardModeChanger?.setAdjustPan().then()
 
-// if your app defaul soft input mode is different from what you are setting, than run resetToDefault when leaving screen
+// return soft input mode back on the same screen if needed
 androidKeyboardModeChanger?.resetToDefault().then()
 ```
 
