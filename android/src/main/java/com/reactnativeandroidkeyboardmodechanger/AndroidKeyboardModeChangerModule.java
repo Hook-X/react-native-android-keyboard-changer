@@ -15,25 +15,17 @@ import com.facebook.react.module.annotations.ReactModule;
 public class AndroidKeyboardModeChangerModule extends ReactContextBaseJavaModule {
     public static final String NAME = "AndroidKeyboardModeChanger";
     private int _mode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
-    private int _defaultMode = 16;
+    private int _defaultMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
+    private boolean _isFirstRun = true;
 
     public AndroidKeyboardModeChangerModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        _defaultMode = getCurrentActivity().getWindow().getAttributes().softInputMode;
     }
 
     @Override
     @NonNull
     public String getName() {
         return NAME;
-    }
-
-
-    // Example method
-    // See https://reactnative.dev/docs/native-modules-android
-    @ReactMethod
-    public void multiply(int a, int b, Promise promise) {
-        promise.resolve(a * b);
     }
 
   @ReactMethod
@@ -105,6 +97,11 @@ public class AndroidKeyboardModeChangerModule extends ReactContextBaseJavaModule
   private void _getActivityAndRunMode(Promise promise) {
       final Activity activity = getCurrentActivity();
 
+    if(_isFirstRun) {
+      _defaultMode = activity.getWindow().getAttributes().softInputMode;
+      _isFirstRun = false;
+    }
+
       activity.runOnUiThread(new Runnable() {
         @Override
         public void run() {
@@ -118,6 +115,4 @@ public class AndroidKeyboardModeChangerModule extends ReactContextBaseJavaModule
         }
       });
   }
-
-    public static native int nativeMultiply(int a, int b);
 }
