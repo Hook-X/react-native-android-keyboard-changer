@@ -1,5 +1,9 @@
 import { NativeModules, Platform } from 'react-native';
 
+type keys = keyof IAndroidKeyboardModeChanger;
+
+export type AndroidKeyboardModeChangerType = { [key in keys]: () => Promise<boolean | undefined> };
+
 export interface IAndroidKeyboardModeChanger {
   resetToDefault(): Promise<boolean>;
   setStateUnspecified(): Promise<boolean>;
