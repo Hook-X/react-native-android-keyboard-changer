@@ -2,7 +2,9 @@ import { NativeModules, Platform } from 'react-native';
 
 type keys = keyof IAndroidKeyboardModeChanger;
 
-export type AndroidKeyboardModeChangerType = { [key in keys]: () => Promise<boolean | undefined> };
+export type AndroidKeyboardModeChangerType = {
+  [key in keys]: () => Promise<boolean | undefined>;
+};
 
 export interface IAndroidKeyboardModeChanger {
   resetToDefault(): Promise<boolean>;
@@ -16,11 +18,11 @@ export interface IAndroidKeyboardModeChanger {
 }
 
 function getAndroidKeyboardModeChanger() {
-  if ((Platform.OS === 'android')){
+  if (Platform.OS === 'android') {
     return NativeModules.AndroidKeyboardModeChanger as IAndroidKeyboardModeChanger;
   }
 
-  return undefined
+  return undefined;
 }
 
 export { getAndroidKeyboardModeChanger };

@@ -1,9 +1,9 @@
 {
   "name": "react-native-android-keyboard-mode-changer",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Package to change android soft input mode",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
+  "main": "src/index",
+  "module": "src/index",
   "types": "src/index",
   "react-native": "src/index",
   "source": "src/index",
